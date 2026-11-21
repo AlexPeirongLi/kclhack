@@ -1,0 +1,18 @@
+{
+  "name": "vector-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A walkable, LLM-generated alternative to the web: ask a question, follow the compass.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "build-map": "node scripts/build-map.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "@huggingface/transformers": "^3.0.0",
+    "express": "^5.0.0",
+    "three": "^0.170.0",
+    "umap-js": "^1.4.0"
+  }
+}

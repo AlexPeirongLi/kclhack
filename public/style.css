@@ -1,0 +1,148 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #e8e6df;
+  color: #000;
+  font-family: "MS Sans Serif", Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+}
+
+/* Live websites are drawn in this layer, behind the game canvas. Active
+   signboards are transparent holes in the canvas that the page shows through. */
+#sites {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #e8e6df;
+}
+
+/* The scene renders at ~300p and is stretched without smoothing. */
+#view {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  display: block;
+}
+
+#dest, #hint, #leave, #page, #start { z-index: 2; }
+
+#leave {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: bold 14px "Courier New", monospace;
+  text-transform: uppercase;
+  color: #fff;
+  background: #d02818;
+  border: 2px solid #1c1c1c;
+  box-shadow: 2px 2px 0 #1c1c1c;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+#dest, #hint {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: #1c1c1c;
+  background: #fff;
+  border: 2px solid #1c1c1c;
+  box-shadow: 2px 2px 0 #1c1c1c;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+#dest { top: 12px; }
+#hint { top: 48px; color: #d02818; border-color: #d02818; box-shadow: 2px 2px 0 #d02818; }
+#dest:empty, #hint:empty { display: none; }
+
+/* Off-screen: it only receives keystrokes. */
+#q {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  opacity: 0;
+}
+
+/* Windows-95-style chrome */
+.win {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  box-shadow: 2px 2px 0 #000;
+}
+.titlebar {
+  background: #000080;
+  color: #fff;
+  font-weight: bold;
+  padding: 3px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.win button {
+  font: inherit;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  padding: 2px 12px;
+  cursor: pointer;
+}
+.win button:active { border-color: #404040 #fff #fff #404040; }
+.pad { padding: 12px 14px; }
+
+#page {
+  position: fixed;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: min(560px, calc(100vw - 24px));
+}
+#page-close { padding: 0 6px; font-weight: bold; }
+#page-body {
+  margin: 6px;
+  padding: 12px;
+  min-height: 140px;
+  max-height: 50vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 2px solid;
+  border-color: #404040 #fff #fff #404040;
+  font: 16px/1.45 "Times New Roman", Times, serif;
+  white-space: pre-wrap;
+}
+.status {
+  margin: 0 6px 6px;
+  padding: 1px 6px;
+  font-size: 12px;
+  border: 1px solid;
+  border-color: #808080 #fff #fff #808080;
+}
+
+#start {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(232, 230, 223, 0.7);
+  padding: 16px;
+}
+#start .win { width: min(460px, 100%); }
+#start p { margin: 0 0 12px; line-height: 1.5; }
+
+.hidden { display: none !important; }

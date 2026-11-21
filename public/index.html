@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vector Web</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "/vendor/three/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="view"></canvas>
+
+  <div id="dest"></div>
+  <div id="hint"></div>
+  <button type="button" id="leave" class="hidden">&lt; Step back (Esc)</button>
+
+  <!-- Captures typing while the compass is turned over; the text is drawn on the compass itself. -->
+  <input id="q" type="text" maxlength="120" autocomplete="off" aria-label="Question for the compass">
+
+  <div id="page" class="win hidden">
+    <div class="titlebar"><span id="page-title">Page</span><button type="button" id="page-close" aria-label="Close">X</button></div>
+    <div id="page-body"></div>
+    <div class="status" id="page-status">Document: Done</div>
+  </div>
+
+  <div id="start">
+    <div class="win">
+      <div class="titlebar">Welcome to Vector Web</div>
+      <div class="pad">
+        <p>The web, but you walk it. Every topic is an island and every signboard is a live website. Etch a question into the back of your compass and the needle points to where its answer lives.</p>
+        <p>
+          <b>Click</b> once, then move the mouse to look &nbsp; <b>Esc</b> frees the mouse<br>
+          <b>WASD</b> move &nbsp; <b>Shift</b> sprint &nbsp; <b>Space</b> jump, and again against a wall to wall-jump<br>
+          <b>C</b> crouch, or slide if you are sprinting<br>
+          <b>E</b> turn the compass over and type &nbsp; <b>Enter</b> seek<br>
+          <b>F</b> use the signboard in front of you &nbsp; <b>G</b> ask the guide about it
+        </p>
+        <button type="button" id="enter">Enter the web</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
